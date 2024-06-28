@@ -9,8 +9,12 @@ Route::get('/mypage', function () {
 });
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+route::get('/',[HomeController::class,'home']);
+
+
+
 
 route::get('/test',[HomeController::class,'index']);
+
+
+route::post('/add_post',[HomeController::class,'add_post']);
