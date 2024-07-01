@@ -56,5 +56,62 @@ return redirect()->back();
 
 }
 
+public function view_post()
+{
+    $post = Post::all();
+
+    return view('allpost',compact('post'));
+}
+
+
+public function edit_post($id)
+{
+
+    $data = Post::find($id);
+
+
+return view('update_post' ,compact('data'));
+
+}
+
+
+public function update_post(Request $request,$id)
+
+{
+
+    $post = Post::find($id);
+
+    $post->title = $request->title;
+
+    $post->description = $request->description;
+
+    $image = $request->image;
+
+    if($image)
+    {
+        $imagename = time().'.'. $image->getClientOriginalExtension();
+
+        $request->image->move('post',$imagename);
+
+        $post->image = $imagename;
+    }
+
+
+    $post->save();
+
+    return redirect('view_post');
+
+
+}
+
+
+public function delete_post($id)
+{
+    $data = Post::find($id);
+
+    $data->delete();
+
+    return redirect()->back();
+}
 
 }

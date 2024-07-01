@@ -23,6 +23,7 @@ label{
 <body>
 
 <center>
+    <a class="btn btn-secondary" href="{{url('view_post')}}">View Post</a>
 
 <h1 class="div_deg">Add Post</h1>
 
